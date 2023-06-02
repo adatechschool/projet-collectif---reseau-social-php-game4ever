@@ -1,0 +1,53 @@
+<body>
+    <header>
+        <img src="resoc.jpg" alt="Logo de notre réseau social"/>
+        <nav id="menu">
+            <a href="news.php">Actualités</a>
+            <a href="wall.php">Mur</a>
+            <a href="feed.php">Flux</a>
+            <a href="tags.php?tag_id=1">Mots-clés</a>
+            <a href="login.php">Login</a>
+        </nav>
+        <nav id="user">
+            <a href="#">Profil</a>
+            <ul>
+                <li><a href="settings.php">Paramètres</a></li>
+                <li><a href="followers.php">Mes suiveurs</a></li>
+                <li><a href="subscriptions.php">Mes abonnements</a></li>
+            </ul>
+
+        </nav>
+    </header>
+
+    <?php
+    // Check if a user_id is in the URL.
+    if (isset($_GET['user_id'])) {
+        $user_id = $_GET['user_id'];
+    } 
+    // Else, check if there is a user_id stocked in the $_SESSION
+    else if (isset($_SESSION['connected_id'])) {
+        $user_id = intval($_SESSION['connected_id']);
+    } 
+    // Else, prompt to user that he/she's not connected
+    else {
+        echo "<article id='not_connected'>Vous n'êtes pas connecté.</article>";
+        
+        // Fix this please
+        if (! $_SERVER['PHP_SELF'] === "registration.php") {
+            exit();
+        }
+    }
+
+    // Connection to the DB (DataBase)
+    $mysqli = new mysqli("localhost", "root", "", "socialnetwork");
+
+    // Verification
+    if ($mysqli->connect_errno)
+    {
+        echo "<article>";
+        echo("Échec de la connexion : " . $mysqli->connect_error);
+        echo("<p>Indice: Vérifiez les parametres de <code>new mysqli(...</code></p>");
+        echo "</article>";
+        exit();
+    }
+    ?>
