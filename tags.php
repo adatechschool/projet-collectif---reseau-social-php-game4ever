@@ -42,7 +42,8 @@ $title = "Les messages par mot-clé"
                 
                 // Get the posts with the selected tag_id
                 $laQuestionEnSql = "
-                    SELECT posts.content,
+                    SELECT posts.id AS post_id, 
+                    posts.content,
                     posts.created,
                     users.alias as author_name,
                     users.id AS post_user_id,  
