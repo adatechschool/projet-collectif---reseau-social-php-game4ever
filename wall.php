@@ -23,7 +23,7 @@ $title = "Mur";
                 if ($user_id == $_SESSION['connected_id']) {
                     // $_POST['new_post] is retrieved when we click on the button in the form further bellow
                     $enCoursDeTraitement = isset($_POST['new_post']);
-                    if ($enCoursDeTraitement) {
+                    if ($enCoursDeTraitement && $_POST['new_post'] !== "") {
                         $author_id = $user_id;
                         $post_content = $_POST['new_post'];
                         // Check for SQL injection

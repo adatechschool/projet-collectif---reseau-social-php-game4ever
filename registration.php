@@ -1,4 +1,5 @@
-<?php $title = "Inscription" ?>
+<?php session_start();
+$title = "Inscription" ?>
 
 <!doctype html>
 <html lang="fr">
