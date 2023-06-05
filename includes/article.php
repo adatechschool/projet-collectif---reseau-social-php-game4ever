@@ -39,6 +39,9 @@
             <?php
             }
             $list_of_tags = explode(',', $post['taglist']);
+            $list_of_tag_id = explode(',', $post['tag_id_list']);
+            $last_element = array_pop($list_of_tag_id);
+            array_unshift($list_of_tag_id, $last_element);
             
             if($list_of_tags !== [""]) {
                 ?> <p> <?php
@@ -46,7 +49,7 @@
                     if ($i != 0) {
                         echo ", ";
                     }
-                    echo "<a href=\"\">#" . $list_of_tags[$i] . "</a>";
+                    echo "<a href='/gamer4ever/tags.php?tag_id=". $list_of_tag_id[$i] . "'>#" . $list_of_tags[$i] . "</a>";
                 }
                 ?> </p> <?php
             }
