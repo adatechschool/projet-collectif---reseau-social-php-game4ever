@@ -33,13 +33,13 @@
         echo "<article id='not_connected'>Vous n'êtes pas connecté.</article>";
         
         // Fix this please
-        if (! $_SERVER['PHP_SELF'] === "registration.php") {
-            exit();
-        }
+        // if (! $_SERVER['PHP_SELF'] === "registration.php") {
+        //     exit();
+        // }
     }
 
     // Connection to the DB (DataBase)
-    $mysqli = new mysqli("localhost", "root", "", "socialnetwork");
+    $mysqli = new mysqli("localhost", "root", "root", "socialnetwork");
 
     // Verification
     if ($mysqli->connect_errno)

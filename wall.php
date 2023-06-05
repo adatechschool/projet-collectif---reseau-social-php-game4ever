@@ -76,7 +76,7 @@ $title = "Mur";
                                 . "VALUES ('" . $post_id . "', '"
                                 . $tag_id . "');";
 
-                            $mysqli = new mysqli("localhost", "root", "", "socialnetwork");
+                            $mysqli = new mysqli("localhost", "root", "root", "socialnetwork");
                             $sqlResult = $mysqli->query($sqlLinkPostTag);
                             if (! $sqlResult) {
                                 echo $mysqli->error;

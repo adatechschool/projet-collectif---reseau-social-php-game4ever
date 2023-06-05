@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" && isset($_POST['like_button'])) {
         . $_POST['like_button'] .");";
     
     // Redeclared because it's in the header.php and no access to header.php
-    $mysqli = new mysqli("localhost", "root", "", "socialnetwork");
+    $mysqli = new mysqli("localhost", "root", "root", "socialnetwork");
     $ok = $mysqli->query($sqlLike);
     if ( ! $ok)
     {
