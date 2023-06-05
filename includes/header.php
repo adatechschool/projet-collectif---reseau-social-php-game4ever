@@ -5,7 +5,6 @@
         // User cannot access any other page if not connected
         if (!isset($_SESSION['connected_id'])) {
             echo "</header><article id='not_connected'>Vous n'êtes pas connecté.</article>";
-            // Fix this please
             if ($_SERVER['PHP_SELF'] === "/gamer4ever/registration.php" || $_SERVER['PHP_SELF'] === "/gamer4ever/login.php") {
             } else {
                 header("Location: /gamer4ever/login.php");

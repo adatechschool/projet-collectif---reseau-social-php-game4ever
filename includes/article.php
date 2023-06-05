@@ -36,6 +36,7 @@
                     </button>
                 </form>
             </small>
+            <div>
             <?php
             }
             $list_of_tags = explode(',', $post['taglist']);
@@ -49,6 +50,7 @@
                 }
             }
             ?>
+            </div>
         </footer>
     </article>
 <?php } ?>
