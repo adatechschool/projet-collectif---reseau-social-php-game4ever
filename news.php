@@ -34,7 +34,7 @@ $title = "Actualités";
                     posts.created,
                     users.id AS post_user_id,
                     users.alias as author_name,  
-                    count(likes.id) as like_number,  
+                    posts.like_count as like_number,  
                     GROUP_CONCAT(DISTINCT tags.label) AS taglist 
                     FROM posts
                     JOIN users ON  users.id=posts.user_id

@@ -165,7 +165,7 @@ $title = "Mur";
                 // Get posts from the DB and show them on the wall page
                 $laQuestionEnSql = "
                     SELECT posts.id AS post_id, posts.content, posts.created, users.alias as author_name, users.id AS post_user_id,
-                    COUNT(likes.id) as like_number, GROUP_CONCAT(DISTINCT tags.label) AS taglist 
+                    posts.like_count as like_number, GROUP_CONCAT(DISTINCT tags.label) AS taglist 
                     FROM posts
                     JOIN users ON  users.id=posts.user_id
                     LEFT JOIN posts_tags ON posts.id = posts_tags.post_id  

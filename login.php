@@ -1,9 +1,6 @@
 <?php
 session_start();
-?>
-
 $title = "Connexion";
-
 ?>
 <!doctype html>
 <html lang="fr">

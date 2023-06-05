@@ -36,21 +36,21 @@
                     </button>
                 </form>
             </small>
-            <div>
             <?php
             }
             $list_of_tags = explode(',', $post['taglist']);
             
             if($list_of_tags !== [""]) {
+                ?> <p> <?php
                 for ($i = 0; $i < sizeof($list_of_tags); $i++) {
                     if ($i != 0) {
                         echo ", ";
                     }
                     echo "<a href=\"\">#" . $list_of_tags[$i] . "</a>";
                 }
+                ?> </p> <?php
             }
             ?>
-            </div>
         </footer>
     </article>
 <?php } ?>
