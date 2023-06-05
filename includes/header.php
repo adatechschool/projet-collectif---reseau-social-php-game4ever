@@ -1,12 +1,19 @@
 <body>
     <header>
-        <img src="resoc.jpg" alt="Logo de notre réseau social"/>
+        <img src="resoc.jpg" alt="Logo de notre réseau social" />
         <nav id="menu">
             <a href="news.php">Actualités</a>
             <a href="wall.php">Mur</a>
             <a href="feed.php">Flux</a>
             <a href="tags.php?tag_id=1">Mots-clés</a>
-            <a href="login.php">Login</a>
+            <?php
+            // condition to login or logout
+            if (isset($_SESSION['connected_id'])) {;
+                echo '<a href="logout.php">Logout</a>';
+            } else {
+                echo '<a href="login.php">Login</a>';
+            }
+            ?>
         </nav>
         <nav id="user">
             <a href="#">Profil</a>
@@ -23,30 +30,29 @@
     // Check if a user_id is in the URL.
     if (isset($_GET['user_id'])) {
         $user_id = $_GET['user_id'];
-    } 
+    }
     // Else, check if there is a user_id stocked in the $_SESSION
     else if (isset($_SESSION['connected_id'])) {
         $user_id = intval($_SESSION['connected_id']);
-    } 
+    }
     // Else, prompt to user that he/she's not connected
     else {
         echo "<article id='not_connected'>Vous n'êtes pas connecté.</article>";
-        
+
         // Fix this please
-        if (! $_SERVER['PHP_SELF'] === "registration.php") {
+        if (!$_SERVER['PHP_SELF'] === "registration.php") {
             exit();
         }
     }
 
     // Connection to the DB (DataBase)
-    $mysqli = new mysqli("localhost", "root", "", "socialnetwork");
+    $mysqli = new mysqli("localhost", "root", "root", "socialnetwork");
 
     // Verification
-    if ($mysqli->connect_errno)
-    {
+    if ($mysqli->connect_errno) {
         echo "<article>";
-        echo("Échec de la connexion : " . $mysqli->connect_error);
-        echo("<p>Indice: Vérifiez les parametres de <code>new mysqli(...</code></p>");
+        echo ("Échec de la connexion : " . $mysqli->connect_error);
+        echo ("<p>Indice: Vérifiez les parametres de <code>new mysqli(...</code></p>");
         echo "</article>";
         exit();
     }
