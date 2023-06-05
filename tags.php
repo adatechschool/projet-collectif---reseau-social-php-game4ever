@@ -47,8 +47,9 @@ $title = "Les messages par mot-clé"
                     posts.created,
                     users.alias as author_name,
                     users.id AS post_user_id,  
-                    count(likes.id) as like_number,  
-                    GROUP_CONCAT(DISTINCT tags.label) AS taglist 
+                    posts.like_count as like_number,  
+                    GROUP_CONCAT(DISTINCT tags.label) AS taglist,
+                    GROUP_CONCAT(DISTINCT tags.id) AS tag_id_list  
                     FROM posts_tags as filter 
                     JOIN posts ON posts.id=filter.post_id
                     JOIN users ON users.id=posts.user_id
