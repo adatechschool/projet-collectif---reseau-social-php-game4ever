@@ -1,7 +1,7 @@
 <body>
     <header>
-        <img src="resoc.jpg" alt="Logo de notre réseau social"/>
-        <?php 
+        <img src="resoc.jpg" alt="Logo de notre réseau social" />
+        <?php
         // User cannot access any other page if not connected
         if (!isset($_SESSION['connected_id'])) {
             echo "</header><article id='not_connected'>Vous n'êtes pas connecté.</article>";
@@ -16,7 +16,15 @@
                 <a href="wall.php">Mur</a>
                 <a href="feed.php">Flux</a>
                 <a href="tags.php?tag_id=1">Mots-clés</a>
-                <a href="login.php">Login</a>
+                <?php
+                // condition to login or logout
+                if (isset($_SESSION['connected_id'])) {;
+                    echo '<a href="logout.php">Logout</a>';
+                } else {
+                    echo '<a href="login.php">Login</a>';
+                }
+
+                ?>
             </nav>
             <nav id="user">
                 <a href="#">Profil</a>
@@ -27,32 +35,30 @@
                 </ul>
 
             </nav>
-        </header>
-        <?php }
+    </header>
+
+
+<?php
+        }
         // Check if a user_id is in the URL.
         if (isset($_GET['user_id'])) {
             $user_id = $_GET['user_id'];
-        } 
+        }
         // Else, check if there is a user_id stocked in the $_SESSION
         else if (isset($_SESSION['connected_id'])) {
             $user_id = intval($_SESSION['connected_id']);
         }
-        ?>
-        
 
-    <?php
-    
 
-    // Connection to the DB (DataBase)
-    $mysqli = new mysqli("localhost", "root", "root", "socialnetwork");
+        // Connection to the DB (DataBase)
+        $mysqli = new mysqli("localhost", "root", "root", "socialnetwork");
 
-    // Verification
-    if ($mysqli->connect_errno)
-    {
-        echo "<article>";
-        echo("Échec de la connexion : " . $mysqli->connect_error);
-        echo("<p>Indice: Vérifiez les parametres de <code>new mysqli(...</code></p>");
-        echo "</article>";
-        exit();
-    }
-    ?>
+        // Verification
+        if ($mysqli->connect_errno) {
+            echo "<article>";
+            echo ("Échec de la connexion : " . $mysqli->connect_error);
+            echo ("<p>Indice: Vérifiez les parametres de <code>new mysqli(...</code></p>");
+            echo "</article>";
+            exit();
+        }
+?>
