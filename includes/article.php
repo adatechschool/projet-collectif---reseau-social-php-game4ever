@@ -13,7 +13,7 @@
         <h3>
             <time><?php echo $post['created']; ?></time>
         </h3>
-        <address>par <a href="/resoc_n1/wall.php?user_id=<?php echo $post['post_user_id']?>"><?php echo  $post['author_name'];?></a></address>
+        <address>par <a href="/gamer4ever/wall.php?user_id=<?php echo $post['post_user_id']?>"><?php echo  $post['author_name'];?></a></address>
         <div>
             <p><?php echo $post['content'];?></p>
         </div>
