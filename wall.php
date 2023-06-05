@@ -46,7 +46,7 @@ $title = "Mur";
                     } else {
                         // Get the id of the post we just created in the DB
                         $post_id = $mysqli->insert_id;
-                        echo "Message posté en tant que : " . $user["alias"];
+                        // echo "Message posté en tant que : " . $user["alias"]; le message napparait pas
                     }
 
                     // We want to extract the tags # from the message we just posted
@@ -152,6 +152,40 @@ $title = "Mur";
                             exit();
                         }
                     }
+                }
+            }
+            // // If the delete button is pressed
+            // if (isset($_POST['delete_post'])) {
+            //     $post_id = $_POST['user_id'];
+
+            //     // Delete the post from the posts table
+            //     $sqlDeletePost = "DELETE FROM posts WHERE id = " . $post_id . ";";
+            //     $ok = $mysqli->query($sqlDeletePost);
+            //     if (!$ok) {
+            //         echo "Impossible de supprimer le post : " . $mysqli->error;
+            //     } else {
+            //         echo "message supprimé";
+            //     }
+
+            //     // Delete the associations from the posts_tags table
+            //     // $sqlDeletePostTags = "DELETE FROM posts_tags WHERE post_id = " . $post_id . ";";
+            //     // $ok = $mysqli->query($sqlDeletePostTags);
+            //     // if (!$ok) {
+            //     //     echo "Impossible de supprimer les associations : " . $mysqli->error;
+            //     // } else {
+            //     //     echo "message supprimé";
+            //     // }
+            // }
+
+            if (isset($_SESSION['connected_id']) && isset($_POST['delete_post'])) {
+                // Delete the post from the posts table
+                $sqlDeletePost = "DELETE FROM posts WHERE id = " . $_POST['delete_post'] . ";";
+                $ok = $mysqli->query($sqlDeletePost);
+                if (!$ok) {
+                    echo "Impossible de supprimer le post : " . $mysqli->error;
+                } else {
+                    echo "message supprimé";
+                    header('Location: ' . $_SERVER['PHP_SELF'] . "?" . $_SERVER['QUERY_STRING']);
                 }
             }
 
