@@ -28,9 +28,9 @@ $title = "Flux";
                     posts.created,
                     users.id AS post_user_id,
                     users.alias as author_name,  
-                    posts.like_count as like_number,  
-                    GROUP_CONCAT(DISTINCT tags.label) AS taglist,
-                    GROUP_CONCAT(DISTINCT tags.id) AS tag_id_list  
+                    posts.like_count as like_number,
+                    GROUP_CONCAT(DISTINCT tags.label ORDER BY FIND_IN_SET(tags.id, posts.tag_id_list)) AS taglist,
+                    posts.tag_id_list  
                     FROM followers 
                     JOIN users ON users.id=followers.followed_user_id
                     JOIN posts ON posts.user_id=users.id
