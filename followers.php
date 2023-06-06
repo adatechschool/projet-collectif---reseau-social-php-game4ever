@@ -16,16 +16,7 @@ $title = "Mes abonné.es"
 <body>
     <?php include 'includes/header.php' ?>
     <div id="wrapper">
-        <aside>
-            <img src="image/profilpicture.jpg" alt="Portrait de l'utilisatrice" />
-            <section>
-                <h3>Présentation</h3>
-                <p>Sur cette page vous trouverez la liste des personnes qui
-                    suivent les messages de l'utilisatrice
-                    n° <?php echo $_SESSION['connected_id'] ?></p>
-
-            </section>
-        </aside>
+        <?php include 'includes/aside_user.php' ?>
         <main class='contacts'>
             <?php
             // Get our followers
