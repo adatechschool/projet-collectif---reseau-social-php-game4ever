@@ -52,15 +52,15 @@
 
             if ($list_of_tags !== [""]) {
             ?> <p> <?php
-                        for ($i = 0; $i < sizeof($list_of_tags); $i++) {
-                            if ($i != 0) {
-                                echo ", ";
-                            }
-                            echo "<a href='/gamer4ever/tags.php?tag_id=" . $list_of_tag_id[$i] . "'>#" . $list_of_tags[$i] . "</a>";
+                    for ($i = 0; $i < sizeof($list_of_tags); $i++) {
+                        if ($i != 0) {
+                            echo ", ";
                         }
-                        ?> </p> <?php
+                        echo "<a href='/gamer4ever/tags.php?tag_id=" . $list_of_tag_id[$i] . "'>#" . $list_of_tags[$i] . "</a>";
                     }
-                        ?>
+                    ?> </p> <?php
+                            }
+                                ?>
         </footer>
     </article>
 <?php } ?>

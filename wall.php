@@ -154,29 +154,8 @@ $title = "Mur";
                     }
                 }
             }
-            // // If the delete button is pressed
-            // if (isset($_POST['delete_post'])) {
-            //     $post_id = $_POST['user_id'];
 
-            //     // Delete the post from the posts table
-            //     $sqlDeletePost = "DELETE FROM posts WHERE id = " . $post_id . ";";
-            //     $ok = $mysqli->query($sqlDeletePost);
-            //     if (!$ok) {
-            //         echo "Impossible de supprimer le post : " . $mysqli->error;
-            //     } else {
-            //         echo "message supprimé";
-            //     }
-
-            //     // Delete the associations from the posts_tags table
-            //     // $sqlDeletePostTags = "DELETE FROM posts_tags WHERE post_id = " . $post_id . ";";
-            //     // $ok = $mysqli->query($sqlDeletePostTags);
-            //     // if (!$ok) {
-            //     //     echo "Impossible de supprimer les associations : " . $mysqli->error;
-            //     // } else {
-            //     //     echo "message supprimé";
-            //     // }
-            // }
-
+            // query to delete a post 
             if (isset($_SESSION['connected_id']) && isset($_POST['delete_post'])) {
                 // Delete the post from the posts table
                 $sqlDeletePost = "DELETE FROM posts WHERE id = " . $_POST['delete_post'] . ";";
