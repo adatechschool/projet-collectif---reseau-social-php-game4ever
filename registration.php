@@ -10,7 +10,13 @@ $title = "Inscription" ?>
         <link rel="stylesheet" href="style.css"/>
     </head>
     <body>
-        <?php include 'includes/header.php' ?>
+        <?php include 'includes/header.php';
+        // If user is connected, cannot access the registration page
+        if (isset($_SESSION["connected_id"])) {
+            header("Location: wall.php");
+            exit();
+        } ?>
+        
 
         <div id="wrapper" >
 
