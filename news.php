@@ -16,14 +16,7 @@ $title = "Actualités";
 <body>
     <?php include 'includes/header.php' ?>
     <div id="wrapper">
-        <aside>
-            <img src="user.jpg" alt="Portrait de l'utilisatrice" />
-            <section>
-                <h3>Présentation</h3>
-                <p>Sur cette page vous trouverez les derniers messages de
-                    tous les utilisatrices du site.</p>
-            </section>
-        </aside>
+        <?php include 'includes/aside_user.php' ?>
 
         <main>
             <?php

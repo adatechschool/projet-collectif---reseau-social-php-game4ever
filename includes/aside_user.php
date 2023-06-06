@@ -4,7 +4,7 @@
     $lesInformations = $mysqli->query($laQuestionEnSql);
     $user = $lesInformations->fetch_assoc();
     ?>
-    <img src="image/téléchargement.png" alt="Portrait de l'utilisatrice" />
+    <img src="image/profilpicture.jpg" alt="Portrait de l'utilisatrice" />
     <section>
         <h3>Présentation</h3>
         <p>Sur cette page vous trouverez tous les message de l'utilisatrice : <?php echo $user['alias'] ?>

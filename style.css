@@ -11,7 +11,7 @@ body {
 
 a {
     text-decoration: none;
-    color: black;
+    color: white;
 }
 
 a:hover {
@@ -21,15 +21,14 @@ a:hover {
 
 body>header {
     background-color: #f67e7dff;
+    color: white;
     display: flex;
     width: 80em;
     margin: 0 auto 2em auto;
     padding: 0;
-
 }
 
 body>header img {
-    opacity: 0.5;
     height: 6em;
 }
 
@@ -48,7 +47,7 @@ body>header #menu a {
 }
 
 body>header a:hover {
-    background-color: #546a76ff;
+    background-color: rgb(129, 162, 180);
 }
 
 body>header ul {
@@ -99,12 +98,18 @@ body>header #user:hover ul {
 }
 
 #wrapper aside {
-    background-color: #546a76ff;
+    background-color: rgb(129, 162, 180);
     ;
     color: white;
     flex: 1;
     padding: 1em;
     border-radius: 1em;
+}
+
+#wrapper aside button {
+    background-color: white;
+    color: #242423ff;
+    ;
 }
 
 #wrapper aside img {
@@ -118,6 +123,12 @@ body>header #user:hover ul {
     padding-left: 1em;
     height: 80vh;
     overflow-y: scroll;
+}
+
+#wrapper main article footer form button {
+    background-color: white;
+    margin-right: 1em;
+    height: 2em;
 }
 
 #wrapper main article {
@@ -150,6 +161,11 @@ body>header #user:hover ul {
     margin-bottom: 1em;
 }
 
+#wrapper main article address a {
+    color: white;
+
+}
+
 #wrapper main article p {
     margin: 0;
 }
@@ -161,7 +177,17 @@ body>header #user:hover ul {
 }
 
 #wrapper main article footer small {
-    float: left;
+    float: right;
+
+}
+
+#wrapper main article footer small button {
+    background-color: white;
+    color: #242423ff;
+}
+
+#wrapper main article footer small button img {
+    background-color: white;
 }
 
 
@@ -257,12 +283,19 @@ form dl dd {
 }
 
 form dl dd textarea {
+
+    background-color: #ffb997ff;
+    font-size: large;
+    font-size: x-large;
+    color: #546a76ff;
     width: 40em;
     height: 15em;
+
 }
 
 #submit_form {
     margin-left: 1em;
+    background-color: white;
 }
 
 .like {
