@@ -37,8 +37,8 @@ $title = "Actualités";
                     users.id AS post_user_id,
                     users.alias as author_name,  
                     posts.like_count as like_number,  
-                    GROUP_CONCAT(DISTINCT tags.label) AS taglist,
-                    GROUP_CONCAT(DISTINCT tags.id) AS tag_id_list  
+                    GROUP_CONCAT(DISTINCT tags.label ORDER BY FIND_IN_SET(tags.id, posts.tag_id_list)) AS taglist,
+                    posts.tag_id_list 
                     FROM posts
                     JOIN users ON  users.id=posts.user_id
                     LEFT JOIN posts_tags ON posts.id = posts_tags.post_id  

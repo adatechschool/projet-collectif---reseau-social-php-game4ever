@@ -15,10 +15,29 @@
         </h3>
         <address>par <a href="/gamer4ever/wall.php?user_id=<?php echo $post['post_user_id'] ?>"><?php echo  $post['author_name']; ?></a></address>
         <div>
-            <p><?php echo $post['content']; ?></p>
+            <?php 
+            // Get a list of tags in the post and another with their id
+            $list_of_tags = explode(',', $post['taglist']);
+            $list_of_tag_id = explode(',', $post['tag_id_list']);
+
+            $post_content = $post['content'];
+            // Replace every tag by a link to the corresponding tag.php page
+
+            for ($i = 0; $i < sizeof($list_of_tags); $i++) {
+                $tag_id = $list_of_tag_id[$i];
+                $tag = $list_of_tags[$i];
+                $tag_link = "<a href=\"tags.php?tag_id=" . $tag_id . "\">#" . $tag . "</a>";
+            
+                // Utiliser une expression régulière pour rechercher et remplacer les tags
+                $pattern = '/#' . preg_quote($tag, '/') . '\b/';
+                $post_content = preg_replace($pattern, $tag_link, $post_content);
+            }
+            ?>
+
+            <p><?php echo $post_content; ?></p>
         </div>
         <footer>
-            <?php if ( $sqlCheckIfPostIsLikedResult->num_rows === 0) { ?>
+            <?php if ($sqlCheckIfPostIsLikedResult->num_rows === 0) { ?>
                 <small>
                     <form method="post" action="<?php echo $_SERVER['PHP_SELF'] . '?' . $_SERVER['QUERY_STRING'] ?>">
                         <input type="hidden" name="like_button" value="<?php echo $post['post_id'] ?>">
@@ -45,22 +64,7 @@
                 </form>
             <?php
             }
-            $list_of_tags = explode(',', $post['taglist']);
-            $list_of_tag_id = explode(',', $post['tag_id_list']);
-            $last_element = array_pop($list_of_tag_id);
-            array_unshift($list_of_tag_id, $last_element);
-
-            if ($list_of_tags !== [""]) {
-            ?> <p> <?php
-                    for ($i = 0; $i < sizeof($list_of_tags); $i++) {
-                        if ($i != 0) {
-                            echo ", ";
-                        }
-                        echo "<a href='/gamer4ever/tags.php?tag_id=" . $list_of_tag_id[$i] . "'>#" . $list_of_tags[$i] . "</a>";
-                    }
-                    ?> </p> <?php
-                        }
-                            ?>
+            ?>
         </footer>
     </article>
 <?php } ?>

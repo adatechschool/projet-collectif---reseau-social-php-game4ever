@@ -3,6 +3,20 @@ $title = "Inscription" ?>
 
 <!doctype html>
 <html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>ReSoC - Inscription</title> 
+        <meta name="author" content="Julien Falconnet">
+        <link rel="stylesheet" href="style.css"/>
+    </head>
+    <body>
+        <?php include 'includes/header.php';
+        // If user is connected, cannot access the registration page
+        if (isset($_SESSION["connected_id"])) {
+            header("Location: wall.php");
+            exit();
+        } ?>
+        
 
 <head>
     <meta charset="utf-8">
