@@ -38,7 +38,7 @@
                 </small>
             <?php
             }
-            if (isset($_SESSION['connected_id']) && $post['post_user_id'] == $_SESSION['connected_id']) { ?>
+            if (isset($_SESSION['connected_id']) && $post['post_user_id'] == $_SESSION['connected_id'] && basename($_SERVER['PHP_SELF']) == 'wall.php') { ?>
                 <form method="post" action="<?php echo $_SERVER['PHP_SELF'] . '?' . $_SERVER['QUERY_STRING'] ?>">
                     <input type="hidden" name="delete_post" value="<?php echo $post['post_id'] ?>">
                     <button type="submit">Delete</button>
@@ -59,8 +59,8 @@
                         echo "<a href='/gamer4ever/tags.php?tag_id=" . $list_of_tag_id[$i] . "'>#" . $list_of_tags[$i] . "</a>";
                     }
                     ?> </p> <?php
-                            }
-                                ?>
+                        }
+                            ?>
         </footer>
     </article>
 <?php } ?>
