@@ -3,9 +3,14 @@
         <img src="resoc.jpg" alt="Logo de notre réseau social" />
         <?php
         // User cannot access any other page if not connected
-        if (!isset($_SESSION['connected_id'])) {
-            echo "</header><article id='not_connected'>Vous n'êtes pas connecté.</article>";
-            if ($_SERVER['PHP_SELF'] === "/gamer4ever/registration.php" || $_SERVER['PHP_SELF'] === "/gamer4ever/login.php") {
+        if (!isset($_SESSION['connected_id'])) {?>
+        <nav id="menu">
+            <a href="login.php">Login</a>
+            <a href="registration.php">Inscription</a>
+        </nav>
+    </header>
+        <article id='not_connected'>Vous n'êtes pas connecté.</article>
+            <?php if ($_SERVER['PHP_SELF'] === "/gamer4ever/registration.php" || $_SERVER['PHP_SELF'] === "/gamer4ever/login.php") {
             } else {
                 header("Location: /gamer4ever/login.php");
                 exit();
@@ -16,15 +21,6 @@
                 <a href="wall.php">Mur</a>
                 <a href="feed.php">Flux</a>
                 <a href="tags.php?tag_id=1">Mots-clés</a>
-                <?php
-                // condition to login or logout
-                if (isset($_SESSION['connected_id'])) {;
-                    echo '<a href="logout.php">Logout</a>';
-                } else {
-                    echo '<a href="login.php">Login</a>';
-                }
-
-                ?>
             </nav>
             <nav id="user">
                 <a href="#">Profil</a>
@@ -32,6 +28,7 @@
                     <li><a href="settings.php">Paramètres</a></li>
                     <li><a href="followers.php">Mes suiveurs</a></li>
                     <li><a href="subscriptions.php">Mes abonnements</a></li>
+                    <li><a href="logout.php">Logout</a></li>
                 </ul>
 
             </nav>

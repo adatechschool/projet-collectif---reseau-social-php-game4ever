@@ -61,7 +61,7 @@ $title = "Connexion";
                         // Stock the user_id in the SESSION
                         $_SESSION['connected_id'] = $user['id'];
                         // refresh to show login or logout
-                        header("Location: " . $_SERVER['PHP_SELF']);
+                        header("Location: /gamer4ever/wall.php");
                     }
                 }
                 ?>
