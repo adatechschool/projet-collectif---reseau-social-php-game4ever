@@ -16,7 +16,7 @@ a {
 
 a:hover {
     text-decoration: underline;
-    color: white;
+    color: black;
 }
 
 body>header {
@@ -26,6 +26,12 @@ body>header {
     width: 80em;
     margin: 0 auto 2em auto;
     padding: 0;
+}
+
+#user ul {
+    /* Ajoutez ici les styles pour le menu déroulant */
+    background-color: yellow;
+    /* Exemple : couleur de fond */
 }
 
 body>header img {
@@ -45,6 +51,7 @@ body>header #menu a {
     padding-top: 2em;
     border-right: 1px solid #99b;
 }
+
 
 body>header a:hover {
     background-color: rgb(129, 162, 180);
