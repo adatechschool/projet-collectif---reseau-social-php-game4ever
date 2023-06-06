@@ -18,7 +18,7 @@
             <p><?php echo $post['content']; ?></p>
         </div>
         <footer>
-            <?php if ($sqlCheckIfPostIsLikedResult && $sqlCheckIfPostIsLikedResult->num_rows === 0) { ?>
+            <?php if ( $sqlCheckIfPostIsLikedResult->num_rows === 0) { ?>
                 <small>
                     <form method="post" action="<?php echo $_SERVER['PHP_SELF'] . '?' . $_SERVER['QUERY_STRING'] ?>">
                         <input type="hidden" name="like_button" value="<?php echo $post['post_id'] ?>">
