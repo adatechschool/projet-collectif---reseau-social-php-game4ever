@@ -47,13 +47,21 @@ $title = "Inscription" ?>
                             // Encrypt password (md5, not secure, we know)
                             $new_passwd = md5($new_passwd);
                             
+                            if(isset($_POST['console'])) {
+                                $selected_consoles = implode(',', $_POST['console']);
+                                $selected_consoles = $mysqli->real_escape_string($selected_consoles);
+                            } else {
+                                $selected_consoles = "";
+                            }
+
                             // Query to add new user
-                            $lInstructionSql = "INSERT INTO users (id, email, password, alias) "
+                            $lInstructionSql = "INSERT INTO users (id, email, password, alias, console) "
                                     . "VALUES (NULL, "
                                     . "'" . $new_email . "', "
                                     . "'" . $new_passwd . "', "
-                                    . "'" . $new_alias . "'"
-                                    . ");";
+                                    . "'" . $new_alias . "', '"
+                                    . $selected_consoles
+                                    . "');";
                                     
                             // DB call
                             $ok = $mysqli->query($lInstructionSql);
@@ -70,7 +78,7 @@ $title = "Inscription" ?>
                     }
                     ?>                     
                     <form action="registration.php" method="post">
-                        <input type='hidden'name='???' value='achanger'>
+                        <div  style="display:flex;">
                         <dl>
                             <dt><label for='pseudo'>Pseudo</label></dt>
                             <dd><input type='text'name='pseudo'></dd>
@@ -86,6 +94,37 @@ $title = "Inscription" ?>
                             <dt><label for='motpasse'>Confirmer votre mot de passe</label></dt>
                             <dd><input type='password'name='motpasse2'></dd>
                         </dl>
+                        <!-- Form to get the plateforms on which the user's playing -->
+                        <dl>
+                            <h2>Sur quelle(s) console(s) jouez-vous ?</h3>
+                            <div id="consoles">
+                                <div class="choix_console">
+                                    <input type="checkbox" name="console[]" value="Switch">
+                                    <label for="Switch">Switch</label>
+                                </div>
+
+                                <div class="choix_console">
+                                    <input type="checkbox" name="console[]" value="PC">
+                                    <label for="PC">PC</label>
+                                </div>
+
+                                <div class="choix_console">
+                                    <input type="checkbox" name="console[]" value="PS4/PS5">
+                                    <label for="PS4/PS5">PS4/PS5</label>
+                                </div>
+
+                                <div class="choix_console">
+                                    <input type="checkbox" name="console[]" value="XBOX">
+                                    <label for="XBOX">XBOX</label>
+                                </div>
+
+                                <div class="choix_console">
+                                    <input type="checkbox" name="console[]" value="Mobile">
+                                    <label for="Mobile">Mobile</label>
+                                </div>
+                            </div>
+                        </dl>
+                        </div>
                         <input type='submit'>
                     </form>
                     <p> Vous avez déjà un compte ? <a href="/gamer4ever/login.php" style="color:blue;">Connectez-vous</a></p>
