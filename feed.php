@@ -3,16 +3,7 @@ session_start();
 $title = "Flux";
 ?>
 
-<!doctype html>
-<html lang="fr">
-    <head>
-        <meta charset="utf-8">
-        <title>ReSoC - Flux</title>         
-        <meta name="author" content="Julien Falconnet">
-        <link rel="stylesheet" href="style.css"/>
-    </head>
-    <body>
-        <?php include 'includes/header.php' ?>
+    <?php include 'includes/header.php' ?>
         <div id="wrapper">
 
             <?php include 'includes/aside_user.php' ?>

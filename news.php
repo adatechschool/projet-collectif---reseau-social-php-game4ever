@@ -3,17 +3,6 @@ session_start();
 $title = "Actualités";
 ?>
 
-<!doctype html>
-<html lang="fr">
-
-<head>
-    <meta charset="utf-8">
-    <title>ReSoC - Actualités</title>
-    <meta name="author" content="Julien Falconnet">
-    <link rel="stylesheet" href="style.css" />
-</head>
-
-<body>
     <?php include 'includes/header.php' ?>
     <div id="wrapper">
         <?php include 'includes/aside_user.php' ?>

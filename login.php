@@ -2,17 +2,6 @@
 session_start();
 $title = "Connexion";
 ?>
-<!doctype html>
-<html lang="fr">
-
-<head>
-    <meta charset="utf-8">
-    <title>ReSoC - <?php echo $title ?></title>
-    <meta name="author" content="Julien Falconnet">
-    <link rel="stylesheet" href="style.css" />
-</head>
-
-<body>
     <?php include 'includes/header.php' ?>
 
     <div id="wrapper">
