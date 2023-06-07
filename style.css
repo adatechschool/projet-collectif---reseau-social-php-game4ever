@@ -1,4 +1,5 @@
-/* --peach: #ffb997ff;
+/* color palette: 
+ --peach: #ffb997ff;
 --auburn: #9e2b25ff;
 --light-coral: #f67e7dff;
 --paynes-gray: #546a76ff;
@@ -11,7 +12,11 @@ body {
 
 a {
     text-decoration: none;
-    color: white;
+    font-style: oblique;
+    font-size: large;
+    color: #242423ff;
+    ;
+    ;
 }
 
 a:hover {
@@ -26,12 +31,6 @@ body>header {
     width: 80em;
     margin: 0 auto 2em auto;
     padding: 0;
-}
-
-#user ul {
-    /* Ajoutez ici les styles pour le menu déroulant */
-    background-color: yellow;
-    /* Exemple : couleur de fond */
 }
 
 body>header img {
@@ -97,6 +96,15 @@ body>header #user:hover ul {
     display: block;
 }
 
+#wrapper main article form input {
+    border-radius: 12px;
+    background-color: #ffb997ff;
+    color: #242423ff;
+    ;
+    font-size: large;
+
+}
+
 
 #wrapper {
     display: flex;
@@ -114,9 +122,10 @@ body>header #user:hover ul {
 }
 
 #wrapper aside button {
-    background-color: white;
-    color: #242423ff;
-    ;
+    background-color: #f67e7dff;
+    color: white;
+    font-size: large;
+    border-radius: 12px;
 }
 
 #wrapper aside img {
@@ -136,6 +145,7 @@ body>header #user:hover ul {
     background-color: white;
     margin-right: 1em;
     height: 2em;
+    border-radius: 12px;
 }
 
 #wrapper main article {
@@ -175,6 +185,7 @@ body>header #user:hover ul {
 
 #wrapper main article p {
     margin: 0;
+    margin-top: 10px;
 }
 
 #wrapper main article footer {
@@ -191,6 +202,7 @@ body>header #user:hover ul {
 #wrapper main article footer small button {
     background-color: white;
     color: #242423ff;
+    border-radius: 12px;
 }
 
 #wrapper main article footer small button img {
@@ -303,6 +315,7 @@ form dl dd textarea {
 #submit_form {
     margin-left: 1em;
     background-color: white;
+    border-radius: 12px;
 }
 
 .like {
