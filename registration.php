@@ -60,16 +60,24 @@ $title = "Inscription" ?>
                             $selected_consoles = implode(',', $_POST['console']);
                             $selected_consoles = $mysqli->real_escape_string($selected_consoles);
                         } else {
-                            $selected_consoles = "";
+                            $selected_consoles = NULL;
+                        }
+
+                        if (isset($_POST['jeux'])) {
+                            $selected_jeux = implode(',', $_POST['jeux']);
+                            $selected_jeux = $mysqli->real_escape_string($selected_jeux);
+                        } else {
+                            $selected_jeux = NULL;
                         }
 
                         // Query to add new user
-                        $lInstructionSql = "INSERT INTO users (id, email, password, alias, console) "
+                        $lInstructionSql = "INSERT INTO users (id, email, password, alias, console, jeux) "
                             . "VALUES (NULL, "
                             . "'" . $new_email . "', "
                             . "'" . $new_passwd . "', "
                             . "'" . $new_alias . "', '"
-                            . $selected_consoles
+                            . $selected_consoles . "', '"
+                            . $selected_jeux
                             . "');";
 
                         // DB call
@@ -102,9 +110,9 @@ $title = "Inscription" ?>
                             <dd><input type='password' name='motpasse2'></dd>
                         </dl>
                         <!-- Form to get the plateforms on which the user's playing -->
-                        <dl>
-                            <h2>Sur quelle(s) console(s) jouez-vous ?</h3>
-                                <div id="consoles">
+                        <dl id="option_inscription">
+                            <h2>Sur quelle(s) console(s) jouez-vous ?</h2>
+                                <div>
                                     <div class="choix_console">
                                         <input type="checkbox" name="console[]" value="Switch">
                                         <label for="Switch">Switch</label>
@@ -129,37 +137,36 @@ $title = "Inscription" ?>
                                         <input type="checkbox" name="console[]" value="Mobile">
                                         <label for="Mobile">Mobile</label>
                                     </div>
-                                    <div style="display:flex;">
-                                        <dl>
-                                            <h2>Quels jeux préférez-vous ?</h2>
-                                            <?php
-                                            $mysqli = new mysqli("localhost", "root", "root", "socialnetwork");
-                                            // catch error
-                                            if ($mysqli->connect_errno) {
-                                                echo "Erreur de connexion à la base de données: " . $mysqli->connect_error;
-                                                exit();
-                                            }
-                                            // query to get list of video games
-                                            $sql = "SELECT name FROM videogame";
-                                            $result = $mysqli->query($sql);
-                                            //catch error
-                                            if (!$result) {
-                                                echo "Erreur de requête: " . $mysqli->error;
-                                                exit();
-                                            }
-                                            // Affichage des cases à cocher
-                                            while ($row = $result->fetch_assoc()) {
-                                                echo "<div class='choix_jeu'>";
-                                                echo "<input type='checkbox' name='games[]' value='" . $row['name'] . "'>";
-                                                echo "<label for='" . $row['name'] . "'>" . $row['name'] . "</label>";
-                                                echo "</div>";
-                                            }
-                                            // Fermeture de la connexion à la base de données
-                                            $mysqli->close();
-                                            ?>
-                                        </dl>
-                                    </div>
+                                </div>
+                            
+                            <h2>A quel(s) jeu(x)jouez-vous ?</h2>
+                                <div>
+                                <?php
+                                // Liste des jeux
+                                $jeux = array(
+                                    array('name' => 'Metal Gear Solid'),
+                                    array('name' => 'Street Fighter'),
+                                    array('name' => 'Monster Hunter'),
+                                    array('name' => 'Tetris'),
+                                    array('name' => 'Batman'),
+                                    array('name' => 'Final Fantasy VII'),
+                                    array('name' => 'Super Mario'),
+                                    array('name' => 'Zelda: A Link to the Past'),
+                                    array('name' => 'Dead or Alive 2'),
+                                    array('name' => 'League of Legends')
+                                );
 
+                                // Générer le formulaire
+                                foreach ($jeux as $jeu) {
+                                    $name = $jeu['name'];
+
+                                    // Générer le code HTML pour chaque jeu
+                                    echo '<div class="choix_jeu">';
+                                    echo '<input type="checkbox" name="jeux[]" value="' . $name . '">';
+                                    echo '<label for="' . $name . '">' . $name . '</label>';
+                                    echo '</div>';
+                                }
+                                ?>
                                 </div>
                         </dl>
                     </div>
@@ -173,39 +180,3 @@ $title = "Inscription" ?>
 </body>
 
 </html>
-
-
-<!-- CREATE TABLE `user_game` (
-`user_id` INT (10),
-`game_id` INT (11),
-ADD CONSTRAINT `FK_user_id` 
-FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE,
-ADD CONSTRAINT `FK_game_id` 
-FOREIGN KEY (`game_id`) REFERENCES `videogame`(`id`) ON DELETE CASCADE
-)ENGINE=INNODB;
-
-ALTER TABLE `user_game` ADD CONSTRAINT `user_id`
-FOREIGN KEY (`user_id`) REFERENCES `users`(`id`)
-ON DELETE CASCADE ON UPDATE CASCADE
-
-ALTER TABLE Orders
-ADD FOREIGN KEY (PersonID) REFERENCES Persons(PersonID);
-
-ALTER TABLE `user_game`
-ADD FOREIGN KEY(`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
-ADD FOREIGN KEY(`game_id`) REFERENCES `videogame` (`id`) ON DELETE CASCADE;
-
-ALTER TABLE `user_game` (
-`user_id` INT (10),
-`game_id` INT (11),
-ADD PRIMARY KEY (user_id, game_id),
-FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE RESTRICT,
-FOREIGN KEY (`game_id`) REFERENCES `videogame`(`id`) ON DELETE RESTRICT
-);
-
-CREATE TABLE `user_game` (
-`user_id` INT (10),
-`game_id` INT (11),
-ADD CONSTRAINT `FK_user_id`FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE,
-ADD CONSTRAINT `FK_game_id`FOREIGN KEY (`game_id`) REFERENCES `videogame`(`id`) ON DELETE CASCADE
-)ENGINE=INNODB; -->

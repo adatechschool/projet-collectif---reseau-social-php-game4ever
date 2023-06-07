@@ -115,7 +115,6 @@ $title = "Mur";
                         // First, transform the tag_list into string
                         $post_tags = implode("','", $post_tag_list);
                         $post_tag_list = implode(",", $post_tag_list);
-                        var_dump($post_tags);
                         // Second, make the query and get the corresponding tag_id_list
                         $sqlGetTagId = "SELECT id FROM tags WHERE label IN ('$post_tags') ORDER BY FIELD(label, '".$post_tag_list."')";
                         $sqlGetTagIdResult = $mysqli->query($sqlGetTagId);
