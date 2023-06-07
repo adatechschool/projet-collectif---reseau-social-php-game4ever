@@ -166,18 +166,6 @@ $title = "Mur";
                 }
             }
 
-            // query to delete a post 
-            if (isset($_SESSION['connected_id']) && isset($_POST['delete_post'])) {
-                // Delete the post from the posts table
-                $sqlDeletePost = "DELETE FROM posts WHERE id = " . $_POST['delete_post'] . ";";
-                $ok = $mysqli->query($sqlDeletePost);
-                if (!$ok) {
-                    echo "Impossible de supprimer le post : " . $mysqli->error;
-                } else {
-                    echo "message supprimé";
-                    header('Location: ' . $_SERVER['PHP_SELF'] . "?" . $_SERVER['QUERY_STRING']);
-                }
-            }
 
             // Like/Unlike function
             include "includes/like_unlike.php";
