@@ -22,23 +22,23 @@
 
                 // Subscribe button
                 if ($sqlFollowingResult && $sqlFollowingResult->num_rows === 0) { ?>
-                    <form action="wall.php?user_id=<?php echo $user_id ?>" method="post">
-                        <button type="submit" name="subscribe_button">Subscribe</button>
-                    </form>
-                <?php } // Unsubscribe button
+        <form action="wall.php?user_id=<?php echo $user_id ?>" method="post">
+            <button type="submit" name="subscribe_button">Subscribe</button>
+        </form>
+    <?php } // Unsubscribe button
                 else { ?>
-                    <form action="wall.php?user_id=<?php echo $user_id ?>" method="post">
-                        <button type="submit" name="unsubscribe_button">Unsubscribe</button>
-                    </form>
-                <?php }
+        <form action="wall.php?user_id=<?php echo $user_id ?>" method="post">
+            <button type="submit" name="unsubscribe_button">Unsubscribe</button>
+        </form>
+<?php }
             } ?>
 
-        </p>
-</section>
+</p>
+    </section>
     <?php
     // Query to modify the users possessed consoles
     if (isset($_POST['console'])) {
-        if (in_array("Je n'ai pas de console", $_POST['console'])){
+        if (in_array("Je n'ai pas de console", $_POST['console'])) {
             $selected_consoles = NULL;
         } else {
             $selected_consoles = implode(',', $_POST['console']);
@@ -58,7 +58,7 @@
 
     // Query to modify possessed games
     if (isset($_POST['jeux'])) {
-        if(in_array("Je n'ai pas de jeu", $_POST['jeux'])){
+        if (in_array("Je n'ai pas de jeu", $_POST['jeux'])) {
             $selected_games = NULL;
         } else {
             $selected_games = implode(',', $_POST['jeux']);
@@ -77,7 +77,7 @@
     }
 
 
-// Console possessed by the user part
+    // Console possessed by the user part
     // Show the consoles the user has if he has any
     if ($user['console'] !== NULL and $user['console'] !== "") {
         $possessed_consoles = explode(",", $user['console']) ?>
@@ -137,9 +137,9 @@
                 <button type="submit">Envoyer</button>
             </div>
         </form>
-    <?php } 
+    <?php }
 
-// Games possessed by the user part
+    // Games possessed by the user part
     // Show the possessed games if the user has any
     if ($user['jeux'] !== NULL and $user['jeux'] !== "") {
         $possessed_jeux = explode(",", $user['jeux']) ?>
@@ -162,37 +162,37 @@
             }
         </script>
         <!-- The button that hide the form -->
-        <button id="afficherModifJeux" onclick="afficherModificationJeux()">Changer les consoles possédées</button>
+        <button id="afficherModifJeux" onclick="afficherModificationJeux()">Changer les jeux préférés</button>
 
         <!-- The form where the user select the games -->
         <form method='POST' action='<?php $_SERVER['PHP_SELF'] . "?" . $_SERVER['QUERY_STRING'] ?>' id="changerJeuxForm" style="display:none;">
             <h2>A quel(s) jeu(x)jouez-vous ?</h2>
             <div>
-            <?php
-            // Liste des jeux
-            $jeux = array(
-                array('name' => 'Metal Gear Solid'),
-                array('name' => 'Street Fighter'),
-                array('name' => 'Monster Hunter'),
-                array('name' => 'Tetris'),
-                array('name' => 'Batman'),
-                array('name' => 'Final Fantasy VII'),
-                array('name' => 'Super Mario'),
-                array('name' => 'Zelda: A Link to the Past'),
-                array('name' => 'Dead or Alive 2'),
-                array('name' => 'League of Legends')
-            );
+                <?php
+                // Liste des jeux
+                $jeux = array(
+                    array('name' => 'Metal Gear Solid'),
+                    array('name' => 'Street Fighter'),
+                    array('name' => 'Monster Hunter'),
+                    array('name' => 'Tetris'),
+                    array('name' => 'Batman'),
+                    array('name' => 'Final Fantasy VII'),
+                    array('name' => 'Super Mario'),
+                    array('name' => 'Zelda: A Link to the Past'),
+                    array('name' => 'Dead or Alive 2'),
+                    array('name' => 'League of Legends')
+                );
 
-            // Générer le formulaire
-            foreach ($jeux as $jeu) {
-                $name = $jeu['name'];
+                // Générer le formulaire
+                foreach ($jeux as $jeu) {
+                    $name = $jeu['name'];
 
-                // Générer le code HTML pour chaque jeu
-                echo '<div class="choix_jeu">';
-                echo '<input type="checkbox" name="jeux[]" value="' . $name . '">';
-                echo '<label for="' . $name . '">' . $name . '</label>';
-                echo '</div>';
-            }?>
+                    // Générer le code HTML pour chaque jeu
+                    echo '<div class="choix_jeu">';
+                    echo '<input type="checkbox" name="jeux[]" value="' . $name . '">';
+                    echo '<label for="' . $name . '">' . $name . '</label>';
+                    echo '</div>';
+                } ?>
                 <div class="choix_jeu">
                     <input type="checkbox" name="jeux[]" value="Je n'ai pas de jeu">
                     <label for="Je n'ai pas de jeu">Je n'ai pas de jeu</label>
@@ -251,6 +251,5 @@
                 handleCheckboxChange(checkbox, lastOptionJeux, checkboxesJeux);
             });
         });
-
     </script>
 </aside>
