@@ -3,6 +3,7 @@ $current_user_id = $_SESSION['connected_id'];
 if ($_SERVER['REQUEST_METHOD'] === "POST" && isset($_POST['like_button'])) {
     $post_id = $_POST['like_button'];
 
+    // Check if the post is already like (could be liked twice or more if the user refresh the page)
     $sqlCheckLike = "SELECT * FROM likes WHERE user_id = $current_user_id AND post_id = $post_id";
     $resultCheckLike = $mysqli->query($sqlCheckLike);
 
@@ -24,8 +25,11 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" && isset($_POST['like_button'])) {
             unset($_POST['like_button']);
         }
     }
-} else if ($_SERVER['REQUEST_METHOD'] === "POST" && isset($_POST['unlike_button'])) {
+} 
+// Same as if the like button is clicked
+else if ($_SERVER['REQUEST_METHOD'] === "POST" && isset($_POST['unlike_button'])) {
     $post_id = $_POST['unlike_button'];
+
     $sqlCheckUnlike = "SELECT * FROM likes WHERE user_id = $current_user_id AND post_id = $post_id";
     $resultCheckUnlike = $mysqli->query($sqlCheckUnlike);
 

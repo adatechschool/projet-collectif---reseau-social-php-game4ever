@@ -204,6 +204,7 @@
     <?php } ?>
 
     <script>
+        // Handle when user click on the last option
         function handleLastOptionChange(lastOption, checkboxes) {
             if (lastOption.checked) {
                 checkboxes.forEach(function(checkbox) {

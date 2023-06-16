@@ -171,10 +171,19 @@ $title = "Mur";
             include "includes/like_unlike.php";
 
             // Get posts from the DB and show them on the wall page
+
+            // To get the correspondance between tags.label and posts.tag_id_list, we use FIND_IN_SET in the query
+            // Else it would be sorted alphabeticaly
             $laQuestionEnSql = "
-                SELECT posts.id AS post_id, posts.content, posts.created, users.alias AS author_name, users.id AS post_user_id,
-                posts.like_count AS like_number, GROUP_CONCAT(DISTINCT tags.label ORDER BY FIND_IN_SET(tags.id, posts.tag_id_list)) AS taglist,
-                posts.tag_id_list 
+                SELECT posts.id AS post_id, 
+                posts.content, 
+                posts.created, 
+                users.alias AS author_name, 
+                users.id AS post_user_id,
+                posts.like_count AS like_number, 
+                GROUP_CONCAT(DISTINCT tags.label ORDER BY FIND_IN_SET(tags.id, posts.tag_id_list)) AS taglist,
+                posts.tag_id_list
+
                 FROM posts
                 JOIN users ON users.id = posts.user_id
                 LEFT JOIN posts_tags ON posts.id = posts_tags.post_id

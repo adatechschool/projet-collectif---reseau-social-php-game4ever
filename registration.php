@@ -162,7 +162,7 @@ $title = "Inscription" ?>
                     <input type='submit'>
 
                 </form>
-                <p> Vous avez déjà un compte ? <a href="/gamer4ever/login.php" style="color:blue;">Connectez-vous</a></p>
+                <p> Vous avez déjà un compte ? <a href="/gamer4ever/login.php">Connectez-vous</a></p>
             </article>
         </main>
     </div>

@@ -37,6 +37,7 @@
             <p><?php echo $post_content; ?></p>
         </div>
         <footer>
+            <!-- Button to like if the post isn't already liked -->
             <?php if ($sqlCheckIfPostIsLikedResult->num_rows === 0) { ?>
                 <small>
                     <form method="post" action="<?php echo $_SERVER['PHP_SELF'] . '?' . $_SERVER['QUERY_STRING'] ?>">
@@ -46,7 +47,8 @@
                         </button>
                     </form>
                 </small>
-            <?php } else { ?>
+            <?php } // Button to unlike if the post is already liked
+            else { ?>
                 <small>
                     <form method="post" action="<?php echo $_SERVER['PHP_SELF'] . '?' . $_SERVER['QUERY_STRING'] ?>">
                         <input type="hidden" name="unlike_button" value="<?php echo $post['post_id'] ?>">
